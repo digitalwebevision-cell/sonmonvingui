@@ -673,7 +673,7 @@
     max-width: 70vw;
     object-fit: contain;
     display: block;
-    margin: 0 auto 28px;
+    margin: 0 auto 20px;
     filter: none;
     animation: logoPulse 3s ease-in-out 1.5s infinite alternate;
   }
@@ -681,26 +681,59 @@
     from { filter: drop-shadow(0 0 8px rgba(184,145,58,0.2)); opacity: 0.9; }
     to   { filter: drop-shadow(0 0 28px rgba(184,145,58,0.6)); opacity: 1; }
   }
+  .splash-title-block {
+    margin-bottom: 8px;
+    animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+    opacity: 0;
+  }
+  .splash-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .splash-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(11px, 2vw, 14px);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-indent: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin: 0 0 20px;
+    text-align: center;
+    display: block;
+  }
   .splash-tagline {
     font-family: 'DM Sans', sans-serif;
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(245,240,232,0.75);
-    margin-bottom: 32px;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 36px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;
+    animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.7s forwards;
     opacity: 0;
   }
+  .splash-enter-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
   .splash-enter {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: rgba(184,145,58,0.15);
-    border: 1px solid rgba(184,145,58,0.5);
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    background: rgba(184,145,58,0.12);
+    border: 1px solid rgba(184,145,58,0.55);
     color: var(--gold-light);
     font-family: 'DM Sans', sans-serif; font-size: 13px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 14px 36px; border-radius: 2px; cursor: pointer;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 15px 48px; border-radius: 2px; cursor: pointer;
     transition: all 0.3s;
+    white-space: nowrap;
     animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.9s forwards, enterGlow 2s ease-in-out 2s infinite alternate;
     opacity: 0;
     backdrop-filter: blur(6px);
@@ -755,11 +788,17 @@
       <div class="splash-logo-ring"></div>
       <img class="splash-logo" src="https://i.imgur.com/Dww44UB.jpg" alt="SonMovingui">
     </div>
-    <p class="splash-tagline" data-i18n="hero.tag">✦ Made in Portugal &nbsp;·&nbsp; Lordelo, Porto</p>
-    <button class="splash-enter" onclick="exitSplash()">
-      <span data-i18n="splash.enter">Entrar</span>
-      <span class="splash-enter-arrow">→</span>
-    </button>
+    <div class="splash-title-block">
+      <h1 class="splash-brand">SonMovingui</h1>
+      <p class="splash-sub">Furniture</p>
+    </div>
+    <p class="splash-tagline">✦ Made in Portugal &nbsp;·&nbsp; Lordelo, Porto</p>
+    <div class="splash-enter-wrap">
+      <button class="splash-enter" onclick="exitSplash()">
+        <span data-i18n="splash.enter">Entrar</span>
+        <span class="splash-enter-arrow">→</span>
+      </button>
+    </div>
   </div>
   <div class="splash-dots">
     <div class="splash-dot"></div>
