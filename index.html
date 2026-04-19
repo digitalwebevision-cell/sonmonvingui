@@ -683,18 +683,24 @@
   }
   .splash-title-block {
     margin-bottom: 8px;
+    text-align: center;
+    width: 100%;
     animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
     opacity: 0;
   }
   .splash-brand {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 6vw, 52px);
+    font-size: clamp(24px, 6vw, 52px);
     font-weight: 700;
     color: var(--cream);
     letter-spacing: 0.08em;
+    text-indent: 0.08em;
     margin: 0 0 4px;
     text-transform: uppercase;
     line-height: 1;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
   .splash-sub {
     font-family: 'DM Sans', sans-serif;
@@ -725,15 +731,16 @@
     width: 100%;
   }
   .splash-enter {
-    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
     background: rgba(184,145,58,0.12);
     border: 1px solid rgba(184,145,58,0.55);
     color: var(--gold-light);
-    font-family: 'DM Sans', sans-serif; font-size: 13px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 15px 48px; border-radius: 2px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 12px;
+    letter-spacing: 0.2em; text-indent: 0.2em; text-transform: uppercase;
+    padding: 14px 44px; border-radius: 2px; cursor: pointer;
     transition: all 0.3s;
     white-space: nowrap;
+    width: auto;
     animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.9s forwards, enterGlow 2s ease-in-out 2s infinite alternate;
     opacity: 0;
     backdrop-filter: blur(6px);
