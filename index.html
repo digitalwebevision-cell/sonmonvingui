@@ -576,13 +576,41 @@
 
     .whatsapp-float { bottom: 16px; right: 16px; width: 48px; height: 48px; font-size: 22px; }
     .notif { right: 12px; left: 12px; max-width: none; }
-    /* splash mobile */
-    .splash-logo { width: 160px; max-width: 50vw; }
-    .splash-content { padding: 0 16px; width: 92%; margin-top: -8vh; }
-    .splash-tagline { font-size: 9px; letter-spacing: 0.14em; margin-bottom: 24px; white-space: normal; }
-    .splash-enter { padding: 12px 24px; font-size: 12px; gap: 8px; }
-    .splash-corner-tl, .splash-corner-br { width: 40px; height: 40px; }
-    .splash-img { object-position: center 45%; }
+    /* splash mobile – sem imagem de fundo */
+        .splash-shine { display: none; }
+    #splashScreen { background: #1a1008; }
+    .splash-logo { width: 220px; max-width: 65vw; filter: none; }
+    .splash-content { padding: 0 24px; width: 100%; margin-top: 0; }
+    .splash-logo-wrap {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 28px;
+  }
+  .splash-logo-ring {
+    position: absolute;
+    width: 340px; height: 340px;
+    max-width: 80vw; max-height: 80vw;
+    border-radius: 50%;
+    border: 1px solid rgba(184,145,58,0.15);
+    animation: ringPulse 4s ease-in-out infinite alternate;
+  }
+  .splash-logo-ring2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    max-width: 90vw; max-height: 90vw;
+    border-radius: 50%;
+    border: 1px solid rgba(184,145,58,0.07);
+    animation: ringPulse 4s ease-in-out 1s infinite alternate;
+  }
+  @keyframes ringPulse {
+    from { transform: scale(0.97); opacity: 0.4; }
+    to   { transform: scale(1.02); opacity: 1; }
+  }
+  .splash-tagline { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 28px; white-space: normal; color: rgba(245,240,232,0.7); }
+    .splash-enter { padding: 13px 28px; font-size: 12px; gap: 8px; }
+    .splash-corner-tl { border-color: rgba(184,145,58,0.5); }
+    .splash-corner-br { border-color: rgba(184,145,58,0.5); }
+    .splash-corner-tl, .splash-corner-br { width: 44px; height: 44px; }
   }
 
   @media (max-width: 380px) {
@@ -598,7 +626,7 @@
   /* ===== SPLASH SCREEN ===== */
   #splashScreen {
     position: fixed; inset: 0; z-index: 9000;
-    background: #1a1008;
+    background: radial-gradient(ellipse at center, #2e1e10 0%, #1a1008 60%, #0e0805 100%);
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
     cursor: pointer;
@@ -611,42 +639,13 @@
     60% { opacity: 1; transform: scale(1.04); }
     100% { opacity: 0; transform: scale(1.08); pointer-events: none; }
   }
-  .splash-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 50%;
-    animation: splashKen 12s ease-in-out infinite alternate;
-    transform-origin: center 50%;
-    filter: brightness(0.75);
-  }
-  @keyframes splashKen {
-    0%   { transform: scale(1);    }
     25%  { transform: scale(1.05); }
     50%  { transform: scale(1.03); }
     75%  { transform: scale(1.06); }
     100% { transform: scale(1.04); }
   }
-  .splash-vignette {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(10,6,2,0.65) 100%);
-    animation: vignetteBreath 6s ease-in-out infinite alternate;
-  }
-  @keyframes vignetteBreath {
-    from { opacity: 0.7; }
     to   { opacity: 1; }
   }
-  .splash-shine {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg,
-      transparent 0%, transparent 30%,
-      rgba(184,145,58,0.06) 45%, rgba(184,145,58,0.12) 50%,
-      rgba(184,145,58,0.06) 55%, transparent 70%, transparent 100%);
-    animation: splashShine 4s ease-in-out infinite;
-    background-size: 300% 300%;
-  }
-  @keyframes splashShine {
-    0%   { background-position: 200% 200%; opacity: 0; }
     30%  { opacity: 1; }
     70%  { opacity: 1; }
     100% { background-position: -100% -100%; opacity: 0; }
@@ -670,17 +669,17 @@
 
   .splash-logo {
     height: auto;
-    width: 260px;
-    max-width: 55vw;
+    width: 300px;
+    max-width: 70vw;
     object-fit: contain;
     display: block;
-    margin: 0 auto 20px;
-    filter: brightness(0) invert(1) drop-shadow(0 2px 24px rgba(0,0,0,0.6));
+    margin: 0 auto 28px;
+    filter: none;
     animation: logoPulse 3s ease-in-out 1.5s infinite alternate;
   }
   @keyframes logoPulse {
-    from { filter: brightness(0) invert(1) drop-shadow(0 2px 16px rgba(184,145,58,0.2)); }
-    to   { filter: brightness(0) invert(1) drop-shadow(0 2px 32px rgba(184,145,58,0.55)); }
+    from { filter: drop-shadow(0 0 8px rgba(184,145,58,0.2)); opacity: 0.9; }
+    to   { filter: drop-shadow(0 0 28px rgba(184,145,58,0.6)); opacity: 1; }
   }
   .splash-tagline {
     font-family: 'DM Sans', sans-serif;
@@ -748,13 +747,14 @@
 <body>
 <!-- SPLASH SCREEN -->
 <div id="splashScreen" onclick="exitSplash()">
-  <img class="splash-img" src="https://i.imgur.com/P8gjc0y.jpg" alt="SonMovingui Kitchen">
-  <div class="splash-vignette"></div>
-  <div class="splash-shine"></div>
   <div class="splash-corner-tl"></div>
   <div class="splash-corner-br"></div>
   <div class="splash-content">
-    <img class="splash-logo" src="https://sonmovingui.com/wp-content/uploads/2019/07/sonmovingui-logo-300x100.png" alt="SonMovingui">
+    <div class="splash-logo-wrap">
+      <div class="splash-logo-ring2"></div>
+      <div class="splash-logo-ring"></div>
+      <img class="splash-logo" src="https://i.imgur.com/Dww44UB.jpg" alt="SonMovingui">
+    </div>
     <p class="splash-tagline" data-i18n="hero.tag">✦ Made in Portugal &nbsp;·&nbsp; Lordelo, Porto</p>
     <button class="splash-enter" onclick="exitSplash()">
       <span data-i18n="splash.enter">Entrar</span>
