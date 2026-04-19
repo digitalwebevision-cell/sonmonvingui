@@ -573,6 +573,12 @@
 
     .whatsapp-float { bottom: 16px; right: 16px; width: 48px; height: 48px; font-size: 22px; }
     .notif { right: 12px; left: 12px; max-width: none; }
+    /* splash mobile */
+    .splash-logo { width: clamp(100px, 35vw, 180px); }
+    .splash-content { padding: 0 20px; max-width: 100%; }
+    .splash-tagline { font-size: 9px; letter-spacing: 0.12em; margin-bottom: 24px; }
+    .splash-enter { padding: 10px 20px; font-size: 11px; gap: 8px; }
+    .splash-corner-tl, .splash-corner-br { width: 40px; height: 40px; }
   }
 
   @media (max-width: 380px) {
@@ -605,10 +611,10 @@
     position: absolute; inset: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center 52%;
     animation: splashKen 12s ease-in-out infinite alternate;
-    transform-origin: center 35%;
-    filter: brightness(0.82);
+    transform-origin: center 52%;
+    filter: brightness(0.75);
   }
   @keyframes splashKen {
     0%   { transform: scale(1);    }
@@ -645,7 +651,8 @@
     position: relative; z-index: 10;
     text-align: center;
     width: 100%;
-    padding: 0 24px;
+    max-width: 420px;
+    padding: 0 32px;
     box-sizing: border-box;
     animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;
     opacity: 0;
@@ -658,11 +665,12 @@
   }
 
   .splash-logo {
-    height: 44px;
-    max-width: min(280px, 70vw);
+    height: auto;
+    width: clamp(120px, 40vw, 220px);
+    max-width: 100%;
     object-fit: contain;
     display: block;
-    margin: 0 auto 24px;
+    margin: 0 auto 20px;
     filter: brightness(0) invert(1) drop-shadow(0 2px 24px rgba(0,0,0,0.6));
     animation: logoPulse 3s ease-in-out 1.5s infinite alternate;
   }
@@ -672,13 +680,11 @@
   }
   .splash-tagline {
     font-family: 'DM Sans', sans-serif;
-    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
     color: rgba(245,240,232,0.75);
-    margin-bottom: 40px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 90vw;
+    margin-bottom: 32px;
+    white-space: normal;
+    word-break: break-word;
     animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;
     opacity: 0;
   }
@@ -689,8 +695,9 @@
     color: var(--gold-light);
     font-family: 'DM Sans', sans-serif; font-size: 13px;
     letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 14px 36px; border-radius: 2px; cursor: pointer;
+    padding: 12px 28px; border-radius: 2px; cursor: pointer;
     transition: all 0.3s;
+    max-width: 100%;
     animation: splashContentIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.9s forwards, enterGlow 2s ease-in-out 2s infinite alternate;
     opacity: 0;
     backdrop-filter: blur(6px);
@@ -714,8 +721,8 @@
     border-style: solid;
     animation: cornerFadeIn 1.5s ease 0.4s forwards; opacity: 0;
   }
-  .splash-corner-tl { top: 24px; left: 24px; border-width: 2px 0 0 2px; }
-  .splash-corner-br { bottom: 24px; right: 24px; border-width: 0 2px 2px 0; }
+  .splash-corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
+  .splash-corner-br { bottom: 60px; right: 16px; border-width: 0 2px 2px 0; }
   @keyframes cornerFadeIn { from{opacity:0;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
   .splash-dots {
     position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
